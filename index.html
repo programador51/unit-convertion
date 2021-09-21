@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversiones metricas</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <img 
+        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.tapemeasure.biz%2Fl-m%2Ftape-measure-300cm-120-inch-double-scale.jpg&f=1&nofb=1" 
+        alt="background"
+    >
+
+    <div class="container">
+        <h1>
+            Conversor de unidades
+        </h1>
+
+        <div class="input">
+            <label>Input</label>
+            <input id="input" type="number">
+            <select id="inputMetric">
+                <option value="1">Perro</option>
+            </select>
+        </div>
+
+
+        <div class="output">
+            <label>Output</label>
+            <input type="text" id="output" disabled>
+            <select id="outputMetric">
+                <option value="1">CM</option>
+            </select>
+        </div>
+
+        <p id="error" class="error">Conversion invalida</p>
+
+        <button id="convert">Convertir</button>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
