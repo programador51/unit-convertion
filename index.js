@@ -7,54 +7,149 @@ const MESSURE_UNITS = {
 
     "mm":{
         type:"longitude",
-        description:"Milimetros",
-        unitValue:1000,
-        baseReference:1,
-        parent:"cm"
+        description:"Milimetros (Longitud)"
     },
 
     "cm":{
         type:"longitude",
-        description:"Centimetros",
-        unitValue:100,
-        baseReference:1,
-        parent:"dm"
+        description:"Centimetros (Longitud)"
     },
 
     "dm":{
         type:"longitude",
-        description:"Decimetro",
-        unitValue:10,
-        baseReference:1
+        description:"Decimetro (Longitud)"
     },
 
     "km":{
         type:"longitude",
-        description:"Kilometros",
-        baseConvertion:1,
-        baseReference:100
+        description:"Kilometros (Longitud)"
     },
 
-    "l":{
-        type:"capacity",
-        description:"Litros"
-    },
     "gr":{
         "type":"mass",
-        "description":"Gramos"
+        "description":"Gramos (Masa)"
     },
 
     "in":{
         "type":"longitude",
-        "description":"Pulgadas"
+        "description":"Pulgadas (Longitud)"
+    },
+    "cm2":{
+        "type":"area",
+        "description":"Centimetro cuadrado - cm2 (Area)"
+    },
+
+    "mm2":{
+        "type":"area",
+        "description":"Milimetro cuadrado - mm2 (Area)"
+    },
+
+    "m2":{
+        "type":"area",
+        "description":"Metro cuadrado - m2 (Area)"
+    },
+
+    "km2":{
+        "type":"area",
+        "description":"Kilometro cuadrado - km2 (Area)"
+    },
+
+    "in2":{
+        "type":"area",
+        "description":"Pulgada cuadrada - in2 (Area)"
+    },
+
+    "mi2":{
+        "type":"area",
+        "description":"Milla cuadrada - mi2 (Area)"
+    },
+
+    "n":{
+        "type":"force",
+        "description":"Newton (Fuerza)"
+    },
+
+    "kn":{
+        "type":"force",
+        "description":"KiloNewton (Fuerza)"
+    },
+
+    "lbf":{
+        "type":"libra",
+        "description": "Libra (Fuerza)"
+    },
+
+    "w":{
+        "type":"energy",
+        "description":"Watts (Energia)"
+    },
+
+    "kw":{
+        "type":"energy",
+        "description":"KiloWatts (Energia)"
+    },
+
+    "gw":{
+        "type":"energy",
+        "description":"GigaWatts (Energia)"
+    },
+
+    "c":{
+        "type":"temperature",
+        "description":"Celsius (Temperatura)"
+    },
+
+    "k":{
+        "type":"temperature",
+        "description":"Kelvin (Temperatura)"
+    },
+
+    "f":{
+        "type":"temperature",
+        "description":"Farenheit (Temperatura)"
+    },
+
+    "r":{
+        "type":"temperature",
+        "description":"Rankine (Temperatura)"
+    },
+
+    "mm3":{
+        "type":"volume",
+        "description":"Milimetros cubicos - mm3 (Volumen)"
+    },
+
+    "cm3":{
+        "type":"volume",
+        "description":"Centimetros cubicos - cm3 (Volumen)"
+    },
+
+    "m3":{
+        "type":"volume",
+        "description":"Metros cubicos - m3 (Volumen)"
+    },
+
+    "km3":{
+        "type":"volume",
+        "description":"Kilometros cubicos - km3 (Volumen)"
+    },
+
+    "in3":{
+        "type":"volume",
+        "description":"Pulgadas cubicas - in3 (Volumen)"
+    },
+
+    "ft3":{
+        "type":"volume",
+        "description":"Pies cubicos - ft3 (Volumen)"
     }
+
 }
 
 const inputMetric = document.getElementById('inputMetric');
 const outputMetric = document.getElementById('outputMetric');
 let inMetricValue = "cm";
 let outMetricValue = "cm";
-const input = +(document.getElementById('input').value);
 const outputDom = document.getElementById('output');
 
 const errorDom = document.getElementById('error');
@@ -96,7 +191,11 @@ function makeConvertion(){
  */
 function isValidUnit(){
     if(MESSURE_UNITS[inMetricValue]['type']!==MESSURE_UNITS[outMetricValue]['type']){
-        displayError('Conversion invalida');
+        displayError(`
+        
+        No puedes convertir ${inMetricValue} a ${outMetricValue}
+
+        `);
         return false;
     }
 
@@ -156,7 +255,7 @@ document.getElementById('convert').addEventListener('click',()=>makeConvertion()
 /**
  * Get the metric unit values
  */
-inputMetric.addEventListener('click',(e)=>inMetricValue = e.target.value);
-outputMetric.addEventListener('click',e=>outMetricValue = e.target.value);
+inputMetric.addEventListener('click',(e)=> inMetricValue = e.target.value);
+outputMetric.addEventListener('click',e=> outMetricValue = e.target.value);
 
 createComboOptions();
